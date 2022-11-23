@@ -6,4 +6,7 @@ export const Container = styled.SafeAreaView`
   justify-content: center;
   align-items: center;
 `;
-export const LoadingIcons = styled.ActivityIndicator``
+
+export const LoadingIcon = styled.ActivityIndicator`
+  margin-top: 50px;
+`;
