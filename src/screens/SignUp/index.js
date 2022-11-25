@@ -77,7 +77,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInput
-                placeholder="Nome"
+                placeholder="Digite o seu nome"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -92,7 +92,7 @@ const SignUp = () => {
             <>
               <TextInputMask
                 type={'cpf'}
-                placeholder="Cpf"
+                placeholder="Digite o seu cpf"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -106,7 +106,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInput
-                placeholder="E-mail"
+                placeholder="Digite o seu e-mail"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -121,7 +121,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInput
-                placeholder="Senha"
+                placeholder="Digite a sua senha"
                 onChangeText={onChange}
                 style={styles.input}
                 secureTextEntry={true}
@@ -137,7 +137,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInput
-                placeholder="Confirmar senha"
+                placeholder="Confirme a senha"
                 onChangeText={onChange}
                 style={styles.input}
                 secureTextEntry={true}
@@ -160,7 +160,7 @@ const SignUp = () => {
                   withDDD: true,
                   dddMask: '(99) ',
                 }}
-                placeholder="Telefone 01"
+                placeholder="Digite o seu telefone"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -180,7 +180,7 @@ const SignUp = () => {
                   withDDD: true,
                   dddMask: '(99) ',
                 }}
-                placeholder="Telefone 02"
+                placeholder="Digite outro telefone (opcional)"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -194,7 +194,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInputMask
-                placeholder="Data de nascimento"
+                placeholder="Digite a sua data de nascimento"
                 type={'datetime'}
                 options={{
                   format: 'DD/MM/YYYY',
@@ -213,7 +213,7 @@ const SignUp = () => {
             <>
               <TextInputMask
                 type={'zip-code'}
-                placeholder="CEP"
+                placeholder="Digite o seu cep"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -229,7 +229,7 @@ const SignUp = () => {
             <>
               <SelectArea>
                 <Select
-                  placeholder="UF"
+                  placeholder="Selecione a sua uf"
                   _selectedItem={{
                     bg: 'teal.900',
                   }}
@@ -250,7 +250,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <Select
-                placeholder="CIDADE"
+                placeholder="Selecione a sua cidade"
                 style={styles.inputSelect}
                 onValueChange={onChange}>
                 {city?.map((city, i) => (
@@ -267,7 +267,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInput
-                placeholder="Bairro"
+                placeholder="Digite o seu bairro"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -281,7 +281,7 @@ const SignUp = () => {
           render={({field: {onChange}}) => (
             <>
               <TextInput
-                placeholder="Rua"
+                placeholder="Digite a sua rua"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -296,7 +296,7 @@ const SignUp = () => {
             <>
               <TextInputMask
                 type={'only-numbers'}
-                placeholder="Número"
+                placeholder="Digite o número"
                 onChangeText={onChange}
                 style={styles.input}
               />
@@ -309,7 +309,7 @@ const SignUp = () => {
           name="complement"
           render={({field: {onChange}}) => (
             <TextInput
-              placeholder="Complemento"
+              placeholder="Digite o complemento (opcional)"
               onChangeText={onChange}
               style={styles.input}
             />
