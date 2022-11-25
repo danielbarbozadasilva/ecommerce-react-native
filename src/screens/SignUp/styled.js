@@ -6,14 +6,6 @@ export const ErrorMessage = styled.Text`
   color: #463f57;
 `;
 
-export const HeaderTitle = styled.Text`
-  font-size: 26px;
-  margin: 30px 0px;
-  padding-top: 10px;
-  color: #463f57;
-  font-weight: bold;
-`;
-
 export const CustomButton = styled.TouchableOpacity`
   height: 45px;
   background-color: #463f57;

@@ -18,7 +18,7 @@ export const Container = styled.SafeAreaView`
 
 export const SImage = styled.Image`
   width: 350px;
-  height: 300px;
+  height: 250px;
 `;
 
 export const InputArea = styled.View`
