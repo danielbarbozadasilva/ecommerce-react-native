@@ -53,7 +53,7 @@ const SignIn = () => {
           placeholder="Digite a senha"
           value={password}
           onChangeText={t => setPassword(t)}
-          password={true}
+          secureTextEntry={true}
           style={styles.input}
         />
         <CustomButton onPress={handlerSignClick}>
