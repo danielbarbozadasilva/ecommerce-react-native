@@ -24,12 +24,15 @@ const SignIn = () => {
 
   const handlerSignClick = async () => {
     if (email !== '' && password !== '') {
-      let result = await signInAction({email, password});
-      if (result.data.token) {
+      const result = await signInAction({email, password});
+      console.log(result);
+      if (result?.data?.token) {
         navigation.navigate('Preload');
       } else {
         alert('E-mail e/ou senha inválidos!');
       }
+    } else {
+      alert('Campo(s) não preenchido(s)!');
     }
   };
 
