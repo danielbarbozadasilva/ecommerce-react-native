@@ -15,7 +15,7 @@ import LockIcon from '../../assets/svg/lock.svg';
 import {useNavigation} from '@react-navigation/native';
 import {signInAction} from '../../store/auth/auth.action';
 import imageLogo from '../../assets/image/1.png';
-import {TextInput} from 'react-native';
+import {TextInput, Alert} from 'react-native';
 
 const SignIn = () => {
   const navigation = useNavigation();
@@ -29,15 +29,19 @@ const SignIn = () => {
       if (result?.data?.token) {
         navigation.navigate('Preload');
       } else {
-        alert('E-mail e/ou senha inválidos!');
+        Alert.alert('Erro', 'E-mail e/ou senha inválidos!');
       }
     } else {
-      alert('Campo(s) não preenchido(s)!');
+      Alert.alert('Atenção', 'Campo(s) não preenchido(s)!');
     }
   };
 
-  const handleMessageButtonClick = () => {
+  const handleSignupButtonClick = () => {
     navigation.navigate('SignUp');
+  };
+
+  const handleRecoveryPasswordButtonClick = () => {
+    navigation.navigate('SendToken');
   };
 
   return (
@@ -59,15 +63,18 @@ const SignIn = () => {
           secureTextEntry={true}
           style={styles.input}
         />
+        <SignMessageButton onPress={handleRecoveryPasswordButtonClick}>
+          <SignMessageButtonText>Esqueceu a sua senha? </SignMessageButtonText>
+          <SignMessageButtonTextBold>Recuperar senha</SignMessageButtonTextBold>
+        </SignMessageButton>
         <CustomButton onPress={handlerSignClick}>
-          <CustomButtonText>LOGIN</CustomButtonText>
+          <CustomButtonText>LOGAR</CustomButtonText>
+        </CustomButton>
+
+        <CustomButton onPress={handleSignupButtonClick}>
+          <CustomButtonText>CADASTRAR</CustomButtonText>
         </CustomButton>
       </InputArea>
-
-      <SignMessageButton title="Cadastrar" onPress={handleMessageButtonClick}>
-        <SignMessageButtonText>Ainda não possui conta? </SignMessageButtonText>
-        <SignMessageButtonTextBold>Cadastre-se</SignMessageButtonTextBold>
-      </SignMessageButton>
     </Container>
   );
 };

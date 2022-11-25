@@ -1,21 +1,21 @@
 import React from 'react';
 import {TextInputMask} from 'react-native-masked-text';
-import {TextInput} from 'react-native';
+import {TextInput, Alert} from 'react-native';
 import {VStack, ScrollView, Select} from 'native-base';
 import {useForm, Controller} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
+import ufCityFile from '../../util/state-city.json';
 import {signUpAction} from '../../store/auth/auth.action';
 import {yupResolver} from '@hookform/resolvers/yup';
-import ufCityFile from '../../util/state-city.json';
 import {
   CustomButton,
   CustomButtonText,
-  HeaderTitle,
   ErrorMessage,
   SelectArea,
   styles,
 } from './styled';
 import {schemaSignUp} from '../../util/validations/form-signup';
+import Title from '../../components/title/index'
 
 const SignUp = () => {
   const navigation = useNavigation();
@@ -61,16 +61,16 @@ const SignUp = () => {
     const result = await signUpAction(nform);
     if (result.data.token) {
       navigation.navigate('SignIn');
-      alert('Cadastro realizado com sucesso!');
+      Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
     } else {
-      alert('Ocorreu um erro ao realizar o cadastro!');
+      Alert.alert('Erro', 'Ocorreu um erro ao realizar o cadastro!');
     }
   };
 
   return (
     <ScrollView>
       <VStack flex={1} px={10}>
-        <HeaderTitle>Crie sua conta</HeaderTitle>
+        <Title text="Crie sua conta" />
         <Controller
           control={control}
           name="name"
@@ -318,18 +318,6 @@ const SignUp = () => {
         <CustomButton onPress={handleSubmit(handleSignUp)}>
           <CustomButtonText>Cadastrar</CustomButtonText>
         </CustomButton>
-
-        {/* <InputArea>
-
-        <CustomButton onPress={handleSignClick}>
-          <CustomButtonText>CADASTRAR</CustomButtonText>
-        </CustomButton>
-      </InputArea>
-
-      <SignMessageButton onPress={handleMessageButtonClick}>
-        <SignMessageButtonText>Já possui uma conta? </SignMessageButtonText>
-        <SignMessageButtonTextBold>Faça Login</SignMessageButtonTextBold>
-      </SignMessageButton>  */}
       </VStack>
     </ScrollView>
   );
