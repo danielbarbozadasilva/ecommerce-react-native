@@ -8,13 +8,14 @@ import {
   SignMessageButton,
   SignMessageButtonText,
   SignMessageButtonTextBold,
+  styles,
 } from './styled';
 import EmailIcon from '../../assets/svg/email.svg';
 import LockIcon from '../../assets/svg/lock.svg';
-import SFormInput from '../../components/FormInput/index';
 import {useNavigation} from '@react-navigation/native';
 import {signInAction} from '../../store/auth/auth.action';
 import imageLogo from '../../assets/image/1.png';
+import {TextInput} from 'react-native';
 
 const SignIn = () => {
   const navigation = useNavigation();
@@ -33,27 +34,27 @@ const SignIn = () => {
   };
 
   const handleMessageButtonClick = () => {
-    navigation.reset({
-      routers: [{name: 'SignUp'}],
-    });
+    navigation.navigate('SignUp');
   };
 
   return (
     <Container>
       <SImage source={imageLogo} />
       <InputArea>
-        <SFormInput
+        <TextInput
           IconSvg={EmailIcon}
           placeholder="Digite o seu e-mail"
           value={email}
           onChangeText={t => setEmail(t)}
+          style={styles.input}
         />
-        <SFormInput
+        <TextInput
           IconSvg={LockIcon}
           placeholder="Digite a senha"
           value={password}
           onChangeText={t => setPassword(t)}
           password={true}
+          style={styles.input}
         />
         <CustomButton onPress={handlerSignClick}>
           <CustomButtonText>LOGIN</CustomButtonText>

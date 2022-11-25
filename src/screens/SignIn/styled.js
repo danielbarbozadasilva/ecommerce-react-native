@@ -1,5 +1,12 @@
 import React from 'react';
-import {SafeAreaView, View, TouchableOpacity, Text, Image} from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  Text,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import styled from 'styled-components/native';
 
 export const Container = styled.SafeAreaView`
@@ -26,7 +33,7 @@ export const CustomButton = styled.TouchableOpacity`
   border-radius: 30px;
   justify-content: center;
   align-items: center;
-  margin: 10px 0px;
+  margin-top: 15px;
 `;
 
 export const CustomButtonText = styled.Text`
@@ -51,3 +58,13 @@ export const SignMessageButtonTextBold = styled.Text`
   color: #463f57;
   font-weight: bold;
 `;
+
+export const styles = StyleSheet.create({
+  input: {
+    height: 50,
+    marginTop: 15,
+    backgroundColor: '#E4E3E8',
+    paddingLeft: 15,
+    fontSize: 16,  
+  },
+});
