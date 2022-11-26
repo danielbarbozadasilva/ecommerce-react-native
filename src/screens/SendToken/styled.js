@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   Text,
   Image,
+  TextInput,
   StyleSheet,
 } from 'react-native';
 import styled from 'styled-components/native';
@@ -14,6 +15,10 @@ export const Container = styled.SafeAreaView`
   flex: 1;
   justify-content: center;
   align-items: center;
+`;
+
+export const STextInput = styled.TextInput`
+  margin: 30px 0px;
 `;
 
 export const SImage = styled.Image`
@@ -65,6 +70,6 @@ export const styles = StyleSheet.create({
     marginTop: 15,
     backgroundColor: '#E4E3E8',
     paddingLeft: 15,
-    fontSize: 16,  
+    fontSize: 16,
   },
 });

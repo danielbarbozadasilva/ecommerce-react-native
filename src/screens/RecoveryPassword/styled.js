@@ -1,9 +1,22 @@
 import React from 'react';
-import {StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {StyleSheet, TouchableOpacity, Text, View} from 'react-native';
 import styled from 'styled-components/native';
 
 export const ErrorMessage = styled.Text`
   color: #463f57;
+`;
+
+export const Container = styled.SafeAreaView`
+  background-color: #fff;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+
+export const InputArea = styled.View`
+  width: 100%;
+  padding: 0px 40px;
 `;
 
 export const CustomButton = styled.TouchableOpacity`
@@ -13,7 +26,7 @@ export const CustomButton = styled.TouchableOpacity`
   border-radius: 30px;
   justify-content: center;
   align-items: center;
-  margin: 35px 0px;
+  margin: 10px 0px;
 `;
 
 export const CustomButtonText = styled.Text`
