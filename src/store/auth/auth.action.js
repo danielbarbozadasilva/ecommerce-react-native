@@ -7,6 +7,13 @@ export const signInAction = async data => {
   } catch (error) {}
 };
 
+export const checkTokenAction = async data => {
+  try {
+    const result = await http.post('/check-token', data);
+    return result;
+  } catch (error) {}
+};
+
 export const sendTokenAction = async data => {
   try {
     const result = await http.put('/user/recovery/password-recovery', data);
