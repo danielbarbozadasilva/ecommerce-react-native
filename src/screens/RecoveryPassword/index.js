@@ -13,7 +13,7 @@ import {
 } from './styled';
 import {schemaRecovery} from '../../util/validations/form-recovery-password';
 import {recoveryPasswordAction} from '../../store/auth/auth.action';
-import Title from '../../components/title/index';
+import Title from '../../components/Title/index';
 
 const RecoveryPassword = () => {
   const navigation = useNavigation();

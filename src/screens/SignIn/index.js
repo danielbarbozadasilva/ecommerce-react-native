@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Container,
   SImage,
@@ -16,18 +16,25 @@ import {useNavigation} from '@react-navigation/native';
 import {signInAction} from '../../store/auth/auth.action';
 import imageLogo from '../../assets/image/1.png';
 import {TextInput, Alert} from 'react-native';
+import AsyncStorage from '@react-native-community/async-storage';
+import {UserContext} from '../../contexts/UserContext';
 
 const SignIn = () => {
+  const {dispatch: userDispatch} = useContext(UserContext);
   const navigation = useNavigation();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handlerSignClick = async () => {
     if (email !== '' && password !== '') {
       const result = await signInAction({email, password});
-      console.log(result);
       if (result?.data?.token) {
-        navigation.navigate('Preload');
+        await AsyncStorage.setItem('token', result?.data?.token);
+        userDispatch({
+          type: 'setAvatar',
+          payload: {avatar: result},
+        });
+        navigation.navigate('MainTab');
       } else {
         Alert.alert('Erro', 'E-mail e/ou senha inválidos!');
       }

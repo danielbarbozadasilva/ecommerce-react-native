@@ -15,7 +15,7 @@ import {
   styles,
 } from './styled';
 import {schemaSignUp} from '../../util/validations/form-signup';
-import Title from '../../components/title/index'
+import Title from '../../components/Title/index'
 
 const SignUp = () => {
   const navigation = useNavigation();
