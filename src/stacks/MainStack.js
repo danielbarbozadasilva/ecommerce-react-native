@@ -6,6 +6,7 @@ import SignUp from '../screens/SignUp/index';
 import MainTab from '../stacks/MainTab';
 import RecoveryPassword from '../screens/RecoveryPassword/index';
 import SendToken from '../screens/SendToken/index';
+import Product from '../screens/Product/index'
 import {NativeBaseProvider} from 'native-base';
 
 const Stack = createStackNavigator();
@@ -22,6 +23,7 @@ const Stacks = () => {
         <Stack.Screen name="SendToken" component={SendToken} />
         <Stack.Screen name="RecoveryPassword" component={RecoveryPassword} />
         <Stack.Screen name="MainTab" component={MainTab} />
+        <Stack.Screen name="Product" component={Product} />
       </Stack.Navigator>
     </NativeBaseProvider>
   );
