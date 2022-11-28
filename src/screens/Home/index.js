@@ -4,41 +4,47 @@ import {useNavigation} from '@react-navigation/native';
 import {
   Container,
   Scroller,
-  HeaderArea,
-  HeaderTitle,
+  SearchArea,
+  SearchInput,
   SearchButton,
   LoadingIcon,
   ListArea,
 } from './styled';
 import ItemProduct from '../../components/ItemProduct/index';
 import SearchIcon from '../../assets/svg/search.svg';
-import {getProductsAction} from '../../store/product/product.action';
+import {
+  getProductsAction,
+  getProductsSearchAction,
+} from '../../store/product/product.action';
+import {useDispatch, useSelector} from 'react-redux';
 
 const Home = () => {
-  const navigation = useNavigation();
-
-  const [loading, setLoading] = useState(false);
-  const [list, setList] = useState([]);
+  const products = useSelector(state => state.product.all);
+  const loading = useSelector(state => state.product.loading);
   const [refreshing, setRefreshing] = useState(false);
+  const [searchText, setSearchText] = useState('');
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
-  const listProducts = async () => {
-    setLoading(true);
-    setList([]);
-
-    const result = await getProductsAction();
-    if (result.data) {
-      setList(result.data);
-    }
-    setLoading(false);
-  };
+  const searchProducts = React.useCallback(
+    searchText => {
+      if (searchText) {
+        dispatch(getProductsSearchAction(searchText));
+      } else {
+        dispatch(getProductsAction(searchText));
+      }
+    },
+    [dispatch],
+  );
 
   useEffect(() => {
-    listProducts();
-  }, []);
+    searchProducts(searchText);
+  }, [searchText]);
 
   const onRefresh = () => {
     setRefreshing(false);
-    listProducts();
+    searchProducts();
+    setSearchText('')
   };
 
   return (
@@ -47,17 +53,22 @@ const Home = () => {
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <HeaderArea>
-          <HeaderTitle numberOfLines={2}>Buscar por produtos</HeaderTitle>
-          <SearchButton onPress={() => navigation.navigate('Search')}>
-            <SearchIcon width="26" height="26" fill="#463f57" />
+        <SearchArea>
+          <SearchInput
+            placeholder="Buscar..."
+            placeholderTextColor="#FFFFFF"
+            value={searchText}
+            onChangeText={t => setSearchText(t)}
+          />
+          <SearchButton>
+            <SearchIcon width="26" height="26" fill="#FFFFFF" />
           </SearchButton>
-        </HeaderArea>
+        </SearchArea>
 
         {loading && <LoadingIcon size="large" color="#463f57" />}
 
         <ListArea>
-          {list.map((item, k) => (
+          {products?.map((item, k) => (
             <ItemProduct key={k} data={item} />
           ))}
         </ListArea>

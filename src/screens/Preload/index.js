@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {Container, LoadingIcon} from './styled';
 import {Image} from 'react-native';
-import AsyncStorage from '@react-native-community/async-storage';
+import {getStorageItem} from '../../config/auth';
 import {useNavigation} from '@react-navigation/native';
 import {checkTokenAction} from '../../store/auth/auth.action';
 
@@ -10,7 +10,7 @@ const Preload = () => {
 
   useEffect(() => {
     const checkToken = async () => {
-      const token = await AsyncStorage.getItem('token');
+      const token = await getStorageItem('token');
       if (token) {
         const result = await checkTokenAction({token});
         if (result) {
