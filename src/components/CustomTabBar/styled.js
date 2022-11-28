@@ -14,8 +14,13 @@ export const TabItem = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const AvatarIcon = styled.Image`
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
+export const TabItemCenter = styled.TouchableOpacity`
+  width: 70px;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 35px;
+  border: 3px solid #463f57;
+  margin-top: -20px;
 `;
