@@ -37,7 +37,10 @@ const ProductDetails = props => {
 
   function increment() {
     setCount(function (prevCount) {
-      return (prevCount += 1);
+      if (product.quantity > prevCount) {
+        return (prevCount += 1);
+      }
+      return prevCount;
     });
   }
 
@@ -45,9 +48,8 @@ const ProductDetails = props => {
     setCount(function (prevCount) {
       if (prevCount > 1) {
         return (prevCount -= 1);
-      } else {
-        return (prevCount = 1);
       }
+      return prevCount;
     });
   }
 
@@ -99,7 +101,9 @@ const ProductDetails = props => {
             <ProductIncrementButton onPress={increment}>
               <CustomButtonText>+</CustomButtonText>
             </ProductIncrementButton>
-            <QuantityTextInput>{count}</QuantityTextInput>
+            <QuantityTextInput>
+              {product.quantity !== 0 ? count : 0}
+            </QuantityTextInput>
             <ProductDecrementButton onPress={decrement}>
               <CustomButtonText>-</CustomButtonText>
             </ProductDecrementButton>
