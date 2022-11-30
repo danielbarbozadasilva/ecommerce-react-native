@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import {
   Container,
   SImage,
@@ -16,21 +16,21 @@ import {useNavigation} from '@react-navigation/native';
 import {signInAction} from '../../store/auth/auth.action';
 import imageLogo from '../../assets/image/1.png';
 import {TextInput, Alert} from 'react-native';
+import {useDispatch} from 'react-redux';
 
 const SignIn = () => {
   const navigation = useNavigation();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const handlerSignClick = async () => {
     if (email !== '' && password !== '') {
-      const result = await signInAction({email, password});
-      console.log(result);
-      if (result?.data?.token) {
-        navigation.navigate('Preload');
-      } else {
-        Alert.alert('Erro', 'E-mail e/ou senha inválidos!');
-      }
+      dispatch(signInAction({email, password})).then(result => {
+        if (result) {
+          navigation.navigate('MainTab');
+        }
+      });
     } else {
       Alert.alert('Atenção', 'Campo(s) não preenchido(s)!');
     }

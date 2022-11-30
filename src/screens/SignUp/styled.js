@@ -6,6 +6,11 @@ export const ErrorMessage = styled.Text`
   color: #463f57;
 `;
 
+export const Container = styled.SafeAreaView`
+  background-color: #fff;
+  flex: 1;
+`;
+
 export const CustomButton = styled.TouchableOpacity`
   height: 45px;
   background-color: #463f57;

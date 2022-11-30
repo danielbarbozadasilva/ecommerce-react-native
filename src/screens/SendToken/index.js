@@ -10,7 +10,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import {sendTokenAction} from '../../store/auth/auth.action';
 import {Alert} from 'react-native';
-import Title from '../../components/title/index';
+import Title from '../../components/Title/index';
 
 const SendToken = () => {
   const navigation = useNavigation();
