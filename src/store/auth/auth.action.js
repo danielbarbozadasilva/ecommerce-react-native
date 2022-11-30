@@ -1,6 +1,6 @@
 import TYPES from '../types';
 import http from '../../config/http';
-import {setStorageItem} from '../../config/auth';
+import {setStorageItem, removeStorageItem} from '../../config/auth';
 import {Alert} from 'react-native';
 
 export const signInAction = data => {
@@ -11,11 +11,13 @@ export const signInAction = data => {
       if (result?.data?.data?.token) {
         await setStorageItem('token', result.data?.data.token);
         dispatch({type: TYPES.SIGN_IN, data: result.data?.data.token});
+        return true
       }
     } catch (error) {
       const {data} = error.response;
       Alert.alert('Erro', data.message);
       dispatch({type: TYPES.SIGN_ERROR, data: error});
+      return false
     }
   };
 };
@@ -57,5 +59,12 @@ export const signUpAction = data => {
       dispatch({type: TYPES.PRODUCT_LIST, data: result.data.data});
       return result.data;
     } catch (error) {}
+  };
+};
+
+export const logoutAction = () => {
+  return async dispatch => {
+    await removeStorageItem('token');
+    dispatch({type: TYPES.SIGN_OUT});
   };
 };
