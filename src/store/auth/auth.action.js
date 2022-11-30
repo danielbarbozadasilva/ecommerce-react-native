@@ -7,6 +7,7 @@ import {
   sendTokenService,
   resetPasswordService,
   signUpService,
+  searchZipCodeService,
 } from '../../services/auth.service';
 
 export const signInAction = data => {
@@ -62,13 +63,21 @@ export const signUpAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await signUpService(data);
-      dispatch({type: TYPES.SIGN_UP, data: data});
+      await setStorageItem('token', result.data?.data.token);
+      dispatch({type: TYPES.SIGN_IN, data: result.data?.data.token});
       return result.data;
     } catch (error) {
       const {data} = error.response;
       Alert.alert('Erro', data.message);
     }
   };
+};
+
+export const searchZipCode = async data => {
+  try {
+    const result = await searchZipCodeService(data);
+    return result.data;
+  } catch (error) {}
 };
 
 export const logoutAction = () => {
