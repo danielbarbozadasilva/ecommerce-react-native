@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {RefreshControl} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
 import {
   Container,
   Scroller,
@@ -16,7 +17,6 @@ import {
   getProductsAction,
   getProductsSearchAction,
 } from '../../store/product/product.action';
-import {useDispatch, useSelector} from 'react-redux';
 
 const Home = () => {
   const products = useSelector(state => state.product.all);

@@ -16,21 +16,21 @@ import {useNavigation} from '@react-navigation/native';
 import {signInAction} from '../../store/auth/auth.action';
 import imageLogo from '../../assets/image/1.png';
 import {TextInput, Alert} from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 
 const SignIn = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const registered = useSelector(state => state.auth.registered);
 
   const handlerSignClick = async () => {
     if (email !== '' && password !== '') {
-      dispatch(signInAction({email, password}));
-      if (registered) {
-        navigation.navigate('MainTab');
-      }
+      dispatch(signInAction({email, password})).then(result => {
+        if (result) {
+          navigation.navigate('MainTab');
+        }
+      });
     } else {
       Alert.alert('Atenção', 'Campo(s) não preenchido(s)!');
     }

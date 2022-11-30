@@ -18,7 +18,7 @@ const ItemProduct = ({data}) => {
   const {photos, title, price, promotion} = data;
 
   const handleClick = () => {
-    navigation.navigate('Product', {product: data});
+    navigation.navigate('ProductDetails', {product: data});
   };
 
   return (

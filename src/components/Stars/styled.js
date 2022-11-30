@@ -3,6 +3,7 @@ import styled from 'styled-components/native';
 
 export const StarArea = styled.View`
   flex-direction: row;
+  margin: 5px 0px;
 `;
 export const StarView = styled.View``;
 

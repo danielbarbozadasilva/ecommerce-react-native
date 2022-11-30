@@ -5,20 +5,20 @@ import StarEmpty from '../../assets/svg/star_empty.svg';
 import {StarArea, StarView, StarText} from './styled';
 
 const Stars = ({stars, showNumber}) => {
-  let s = [0, 0, 0, 0, 0];
+  let star = [0, 0, 0, 0, 0];
   let floor = Math.floor(stars);
   let left = stars - floor;
 
   for (var i = 0; i < floor; i++) {
-    s[i] = 2;
+    star[i] = 2;
   }
   if (left > 0) {
-    s[i] = 1;
+    star[i] = 1;
   }
 
   return (
     <StarArea>
-      {s.map((i, k) => (
+      {star.map((i, k) => (
         <StarView key={k}>
           {i === 0 && <StarEmpty width="18" height="18" fill="#FF9200" />}
           {i === 1 && <StarHalf width="18" height="18" fill="#FF9200" />}
