@@ -9,15 +9,18 @@ import {
   signUpService,
   searchZipCodeService,
 } from '../../services/auth.service';
+import http from '../../config/http';
 
 export const signInAction = data => {
   return async dispatch => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await authService(data);
-      if (result?.data?.data?.token) {
-        await setStorageItem('token', result.data?.data.token);
-        dispatch({type: TYPES.SIGN_IN, data: result.data?.data.token});
+      const token = result.data?.data.token;
+      if (token) {
+        await setStorageItem('token', token);
+        http.defaults.headers.token = token;
+        dispatch({type: TYPES.SIGN_IN, data: token});
         return true;
       }
     } catch (error) {
