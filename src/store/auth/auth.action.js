@@ -44,7 +44,6 @@ export const sendTokenAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await sendTokenService(data);
-      dispatch({type: TYPES.AUTH_TOKEN, data: result.data.data});
       return result.data;
     } catch (error) {}
   };
@@ -55,7 +54,6 @@ export const recoveryPasswordAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await resetPasswordService(data);
-      dispatch({type: TYPES.AUTH_TOKEN, data: result.data.data});
       return result.data;
     } catch (error) {}
   };

@@ -14,9 +14,11 @@ import {
 import {schemaRecovery} from '../../util/validations/form-recovery-password';
 import {recoveryPasswordAction} from '../../store/auth/auth.action';
 import Title from '../../components/Title/index';
+import {useDispatch} from 'react-redux';
 
 const RecoveryPassword = () => {
   const navigation = useNavigation();
+  const dispatch = useDispatch();
   const {
     control,
     handleSubmit,
@@ -29,17 +31,17 @@ const RecoveryPassword = () => {
       token: form.token,
       newPassword: form.newPassword,
     };
-    const result = await recoveryPasswordAction(nform);
-    console.log(result);
-    if (result) {
-      navigation.navigate('SignIn');
-      Alert.alert('Sucesso', 'Senha alterada com sucesso!');
-    } else {
-      Alert.alert(
-        'Erro',
-        'Ocorreu um erro ao realizar a operação!\nCertifique-se que você digitou os dados corretamente.',
-      );
-    }
+    dispatch(recoveryPasswordAction(nform)).then(result => {
+      if (result) {
+        navigation.navigate('SignIn');
+        Alert.alert('Sucesso', 'Senha alterada com sucesso!');
+      } else {
+        Alert.alert(
+          'Erro',
+          'Ocorreu um erro ao realizar a operação!\nCertifique-se que você digitou os dados corretamente.',
+        );
+      }
+    });
   };
 
   const handleBackButtonClick = () => {
