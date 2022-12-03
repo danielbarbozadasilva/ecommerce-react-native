@@ -16,11 +16,12 @@ export const signInAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await authService(data);
-      const token = result.data?.data.token;
-      if (token) {
-        await setStorageItem('token', token);
-        http.defaults.headers.token = token;
-        dispatch({type: TYPES.SIGN_IN, data: token});
+      const credentials = result.data?.data;
+      if (credentials.token) {
+        http.defaults.headers.token = credentials.token;
+        await setStorageItem('token', credentials.token);
+        dispatch({type: TYPES.SIGN_IN, data: credentials.token});
+        await setStorageItem('credentials', credentials.userDTO.id);
         return true;
       }
     } catch (error) {
