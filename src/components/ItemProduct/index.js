@@ -4,8 +4,6 @@ import {
   ProductImage,
   InfoArea,
   ProductName,
-  ProductButton,
-  ProductButtonText,
   ProductPromotion,
   ProductPrice,
 } from './styled';
@@ -15,7 +13,7 @@ import {formatPriceBr} from '../../util/helpers/format-price';
 
 const ItemProduct = ({data}) => {
   const navigation = useNavigation();
-  const {photos, title, price, promotion} = data;
+  const {photos, title, price, promotion, total} = data;
 
   const handleClick = () => {
     navigation.navigate('ProductDetails', {product: data});
@@ -34,10 +32,7 @@ const ItemProduct = ({data}) => {
         ) : (
           <ProductPrice>{formatPriceBr(promotion)}</ProductPrice>
         )}
-        <Stars stars={5} showNumber={true} />
-        <ProductButton>
-          <ProductButtonText>Comprar</ProductButtonText>
-        </ProductButton>
+        <Stars stars={total} showNumber={true} />
       </InfoArea>
     </Area>
   );
