@@ -23,7 +23,6 @@ const Home = () => {
   const loading = useSelector(state => state.product.loading);
   const [refreshing, setRefreshing] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const searchProducts = React.useCallback(

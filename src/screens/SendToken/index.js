@@ -11,19 +11,22 @@ import {useNavigation} from '@react-navigation/native';
 import {sendTokenAction} from '../../store/auth/auth.action';
 import {Alert} from 'react-native';
 import Title from '../../components/Title/index';
+import {useDispatch} from 'react-redux';
 
 const SendToken = () => {
   const navigation = useNavigation();
   const [email, setEmail] = React.useState('');
+  const dispatch = useDispatch();
 
   const handlerRecoveryClick = async () => {
     if (email !== '') {
-      const result = await sendTokenAction({email});
-      if (result) {
-        navigation.navigate('RecoveryPassword');
-      } else {
-        Alert.alert('Erro', 'E-mail inválido!');
-      }
+      dispatch(sendTokenAction({email})).then(result => {
+        if (result) {
+          navigation.navigate('RecoveryPassword');
+        } else {
+          Alert.alert('Erro', 'E-mail inválido!');
+        }
+      });
     } else {
       Alert.alert('Atenção', 'Campo não preenchido!');
     }

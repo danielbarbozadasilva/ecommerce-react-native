@@ -7,16 +7,20 @@ import {
   sendTokenService,
   resetPasswordService,
   signUpService,
+  searchZipCodeService,
 } from '../../services/auth.service';
+import http from '../../config/http';
 
 export const signInAction = data => {
   return async dispatch => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await authService(data);
-      if (result?.data?.data?.token) {
-        await setStorageItem('token', result.data?.data.token);
-        dispatch({type: TYPES.SIGN_IN, data: result.data?.data.token});
+      const token = result.data?.data.token;
+      if (token) {
+        await setStorageItem('token', token);
+        http.defaults.headers.token = token;
+        dispatch({type: TYPES.SIGN_IN, data: token});
         return true;
       }
     } catch (error) {
@@ -40,7 +44,6 @@ export const sendTokenAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await sendTokenService(data);
-      dispatch({type: TYPES.AUTH_TOKEN, data: result.data.data});
       return result.data;
     } catch (error) {}
   };
@@ -51,7 +54,6 @@ export const recoveryPasswordAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await resetPasswordService(data);
-      dispatch({type: TYPES.AUTH_TOKEN, data: result.data.data});
       return result.data;
     } catch (error) {}
   };
@@ -62,13 +64,21 @@ export const signUpAction = data => {
     dispatch({type: TYPES.AUTH_LOADING, status: true});
     try {
       const result = await signUpService(data);
-      dispatch({type: TYPES.SIGN_UP, data: data});
+      await setStorageItem('token', result.data?.data.token);
+      dispatch({type: TYPES.SIGN_IN, data: result.data?.data.token});
       return result.data;
     } catch (error) {
       const {data} = error.response;
       Alert.alert('Erro', data.message);
     }
   };
+};
+
+export const searchZipCode = async data => {
+  try {
+    const result = await searchZipCodeService(data);
+    return result.data;
+  } catch (error) {}
 };
 
 export const logoutAction = () => {

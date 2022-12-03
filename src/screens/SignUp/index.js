@@ -5,7 +5,7 @@ import {VStack, ScrollView, Select} from 'native-base';
 import {useForm, Controller} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import ufCityFile from '../../util/state-city.json';
-import {signUpAction} from '../../store/auth/auth.action';
+import {signUpAction, searchZipCode} from '../../store/auth/auth.action';
 import {yupResolver} from '@hookform/resolvers/yup';
 import {
   CustomButton,
@@ -28,6 +28,7 @@ const SignUp = () => {
     control,
     handleSubmit,
     watch,
+    setValue,
     formState: {errors},
   } = useForm({resolver: yupResolver(schemaSignUp)});
 
@@ -64,10 +65,21 @@ const SignUp = () => {
 
     dispatch(signUpAction(nform)).then(result => {
       if (result?.data?.token) {
-        navigation.navigate('SignIn');
+        navigation.navigate('MainTab');
         Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       }
     });
+  };
+
+  const checkCEP = async () => {
+    const cep = watch('zipCode')?.replace(/\D/g, '');
+    const data = await searchZipCode(cep);
+    if (data) {
+      setValue('street', data.logradouro);
+      setValue('city', data.localidade?.toUpperCase());
+      setValue('district', data.bairro);
+      setValue('uf', data.uf);
+    }
   };
 
   return (
@@ -227,6 +239,7 @@ const SignUp = () => {
                   type={'zip-code'}
                   placeholder="Digite o seu cep"
                   onChangeText={onChange}
+                  onBlur={checkCEP}
                   style={styles.input}
                 />
                 <ErrorMessage>{errors.zipCode?.message || ''}</ErrorMessage>
@@ -237,7 +250,7 @@ const SignUp = () => {
           <Controller
             control={control}
             name="uf"
-            render={({field: {onChange}}) => (
+            render={({field: {onChange, value}}) => (
               <>
                 <SelectArea>
                   <Select
@@ -246,7 +259,8 @@ const SignUp = () => {
                       bg: 'teal.900',
                     }}
                     style={styles.inputSelect}
-                    onValueChange={onChange}>
+                    onValueChange={onChange}
+                    selectedValue={value}>
                     {uf?.map(({name, uf}, i) => (
                       <Select.Item key={i} label={uf} value={uf} />
                     ))}
@@ -260,11 +274,13 @@ const SignUp = () => {
           <Controller
             control={control}
             name="city"
-            render={({field: {onChange}}) => (
+            render={({field: {onChange, value}}) => (
               <>
                 <Select
                   placeholder="Selecione a sua cidade"
                   style={styles.inputSelect}
+                  value={value}
+                  selectedValue={value}
                   onValueChange={onChange}>
                   {city?.map((city, i) => (
                     <Select.Item key={i} label={city} value={city} />
@@ -278,11 +294,12 @@ const SignUp = () => {
           <Controller
             control={control}
             name="district"
-            render={({field: {onChange}}) => (
+            render={({field: {onChange, value}}) => (
               <>
                 <TextInput
                   placeholder="Digite o seu bairro"
                   onChangeText={onChange}
+                  value={value}
                   style={styles.input}
                 />
                 <ErrorMessage>{errors.district?.message || ''}</ErrorMessage>
@@ -293,11 +310,12 @@ const SignUp = () => {
           <Controller
             control={control}
             name="street"
-            render={({field: {onChange}}) => (
+            render={({field: {onChange, value}}) => (
               <>
                 <TextInput
                   placeholder="Digite a sua rua"
                   onChangeText={onChange}
+                  value={value}
                   style={styles.input}
                 />
                 <ErrorMessage>{errors.street?.message || ''}</ErrorMessage>
