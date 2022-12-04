@@ -13,7 +13,7 @@ import {renderImg} from '../../util/helpers/helpers.image';
 import {useNavigation} from '@react-navigation/native';
 import {formatPriceBr} from '../../util/helpers/format-price';
 
-const ItemProduct = ({data}) => {
+const ItemCategoryProduct = ({data}) => {
   const navigation = useNavigation();
   const {photos, title, price, promotion} = data;
 
@@ -42,4 +42,4 @@ const ItemProduct = ({data}) => {
     </Area>
   );
 };
-export default ItemProduct;
+export default ItemCategoryProduct;
