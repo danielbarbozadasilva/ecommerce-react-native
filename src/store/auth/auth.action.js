@@ -21,7 +21,7 @@ export const signInAction = data => {
         http.defaults.headers.token = credentials.token;
         await setStorageItem('token', credentials.token);
         dispatch({type: TYPES.SIGN_IN, data: credentials.token});
-        await setStorageItem('credentials', credentials.userDTO.id);
+        await setStorageItem('credentials', credentials.userDTO.clientid);
         return true;
       }
     } catch (error) {

@@ -20,15 +20,13 @@ const Favorites = () => {
   return (
     <Container>
       <Scroller>
-        {loading && !products ? (
-          <LoadingIcon size="large" color="#463f57" />
-        ) : (
-          <ListArea>
-            {products?.map((item, k) => (
-              <ItemProduct key={k} data={item} />
-            ))}
-          </ListArea>
-        )}
+        {loading && <LoadingIcon size="large" color="#463f57" />}
+
+        <ListArea>
+          {products?.map((item, k) => (
+            <ItemProduct key={k} data={item} />
+          ))}
+        </ListArea>
       </Scroller>
     </Container>
   );

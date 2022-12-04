@@ -28,12 +28,29 @@ import Swiper from 'react-native-swiper';
 import {renderImg} from '../../util/helpers/helpers.image';
 import Stars from '../../components/Stars/index';
 import FavoriteIcon from '../../assets/svg/favorite.svg';
+import FavoriteFullIcon from '../../assets/svg/favorite_full.svg';
+
 import BackIcon from '../../assets/svg/back.svg';
+import {getStorageItem} from '../../config/auth';
 
 const ProductDetails = props => {
   const [count, setCount] = React.useState(1);
   const {product} = props.route.params;
   const navigation = useNavigation();
+
+  const getLike = async likes => {
+    const id = await getStorageItem('credentials');
+    const result = likes?.filter(item => item === id);
+    return !!result;
+  };
+
+  const createLikeProduct = () => {
+    console.log('-----createLikeProduct');
+  };
+
+  const undoLikeProduct = () => {
+    console.log('-----undoLikeProduct');
+  };
 
   function increment() {
     setCount(function (prevCount) {
@@ -94,7 +111,21 @@ const ProductDetails = props => {
               <Stars stars={5} showNumber={true} />
             </ProductInfo>
             <ProductFavButton>
-              <FavoriteIcon width="24" height="24" fill="#463f57" />
+              {product.likes && getLike(product.likes) ? (
+                <FavoriteFullIcon
+                  onPress={undoLikeProduct}
+                  width="24"
+                  height="24"
+                  fill="#463f57"
+                />
+              ) : (
+                <FavoriteIcon
+                  onPress={createLikeProduct}
+                  width="24"
+                  height="24"
+                  fill="#463f57"
+                />
+              )}
             </ProductFavButton>
           </ProductInfoArea>
           <ProductQuantityArea>
