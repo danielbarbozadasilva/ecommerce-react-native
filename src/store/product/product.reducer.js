@@ -2,7 +2,8 @@ import TYPES from '../types';
 
 export const INITIAL_STATE = {
   loading: false,
-  all: []
+  all: [],
+  productById: {},
 };
 
 const reducer = ({...state} = INITIAL_STATE, action) => {
@@ -17,9 +18,12 @@ const reducer = ({...state} = INITIAL_STATE, action) => {
       state.loading = false;
       return state;
 
+    case TYPES.PRODUCT_ID:
+      state.productById = action.data;
+      state.loading = false;
+      return state;
     default:
       return state;
   }
 };
-export default reducer
-
+export default reducer;
