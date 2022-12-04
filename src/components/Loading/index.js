@@ -1,8 +1,12 @@
 import React from 'react';
-import {LoadingIcon} from './styled';
+import {SLoading, LoadingBox} from './styled';
 
 const Loading = () => {
-  return <LoadingIcon />;
+  return (
+    <LoadingBox>
+      <SLoading size="large" color="#fff" />
+    </LoadingBox>
+  );
 };
 
 export default Loading;
