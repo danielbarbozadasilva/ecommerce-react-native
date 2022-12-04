@@ -16,14 +16,11 @@ export const SearchButton = styled.TouchableOpacity`
   height: 26px;
 `;
 
-export const LoadingIcon = styled.ActivityIndicator`
-  margin-top: 50px;
-`;
-
 export const ListArea = styled.View`
   margin-top: 30px;
   margin-bottom: 30px;
 `;
+
 export const SearchArea = styled.View`
   background-color: #463f57;
   height: 50px;
@@ -33,8 +30,13 @@ export const SearchArea = styled.View`
   padding-right: 20px;
   margin-top: 10px;
 `;
+
 export const SearchInput = styled.TextInput`
   flex: 1;
   font-size: 16px;
   color: #ffffff;
+`;
+
+export const ContainerText = styled.View`
+  margin: 50% auto;
 `;

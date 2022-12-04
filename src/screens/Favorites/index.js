@@ -1,8 +1,10 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Container, Scroller, LoadingIcon, ListArea} from './styled';
+import {Container, Scroller, ListArea, ContainerText} from './styled';
 import ItemProduct from '../../components/ItemProduct/index';
+import Loading from '../../components/Loading/index';
 import {getClientLikeProductAction} from '../../store/client/client.action';
+import {Text} from 'react-native';
 
 const Favorites = () => {
   const products = useSelector(state => state.client.likes);
@@ -17,16 +19,24 @@ const Favorites = () => {
     searchProducts();
   }, []);
 
+  if (loading) {
+    <Loading />;
+  }
+
   return (
     <Container>
       <Scroller>
-        {loading && <LoadingIcon size="large" color="#463f57" />}
-
-        <ListArea>
-          {products?.map((item, k) => (
-            <ItemProduct key={k} data={item} />
-          ))}
-        </ListArea>
+        {!loading && products.length === 0 ? (
+          <ListArea>
+            {products?.map((item, k) => (
+              <ItemProduct key={k} data={item} />
+            ))}
+          </ListArea>
+        ) : (
+          <ContainerText>
+            <Text>As suas curtidas aparecem aqui.</Text>
+          </ContainerText>
+        )}
       </Scroller>
     </Container>
   );

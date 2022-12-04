@@ -16,8 +16,8 @@ export const SearchButton = styled.TouchableOpacity`
   height: 26px;
 `;
 
-export const LoadingIcon = styled.ActivityIndicator`
-  margin-top: 50px;
+export const ContainerText = styled.View`
+  margin: 50% auto;
 `;
 
 export const ListArea = styled.View`

@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {RefreshControl} from 'react-native';
+import {RefreshControl, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
@@ -8,8 +8,8 @@ import {
   SearchArea,
   SearchInput,
   SearchButton,
-  LoadingIcon,
   ListArea,
+  ContainerText,
 } from './styled';
 import ItemProduct from '../../components/ItemProduct/index';
 import SearchIcon from '../../assets/svg/search.svg';
@@ -17,6 +17,7 @@ import {
   getProductsAction,
   getProductsSearchAction,
 } from '../../store/product/product.action';
+import Loading from '../../components/Loading/index';
 
 const Home = () => {
   const products = useSelector(state => state.product.all);
@@ -43,8 +44,12 @@ const Home = () => {
   const onRefresh = () => {
     setRefreshing(false);
     searchProducts();
-    setSearchText('')
+    setSearchText('');
   };
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Container>
@@ -64,13 +69,17 @@ const Home = () => {
           </SearchButton>
         </SearchArea>
 
-        {loading && <LoadingIcon size="large" color="#463f57" />}
-
-        <ListArea>
-          {products?.map((item, k) => (
-            <ItemProduct key={k} data={item} />
-          ))}
-        </ListArea>
+        {!loading && products.length === 0 ? (
+          <ContainerText>
+            <Text>Nenhum produto disponível.</Text>
+          </ContainerText>
+        ) : (
+          <ListArea>
+            {products?.map((item, k) => (
+              <ItemProduct key={k} data={item} />
+            ))}
+          </ListArea>
+        )}
       </Scroller>
     </Container>
   );
