@@ -24,9 +24,9 @@ const Categories = () => {
   }
   return (
     <Container>
-      {!loading && categories.length === 0 ? (
+      {categories.length === 0 ? (
         <ContainerText>
-          <Text>Nenhuma categoria disponível.</Text>
+          <Text>Nenhuma categoria cadastrada.</Text>
         </ContainerText>
       ) : (
         <ListArea>
