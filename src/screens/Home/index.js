@@ -31,7 +31,7 @@ const Home = () => {
       if (searchText) {
         dispatch(getProductsSearchAction(searchText));
       } else {
-        dispatch(getProductsAction(searchText));
+        dispatch(getProductsAction());
       }
     },
     [dispatch],
@@ -69,7 +69,7 @@ const Home = () => {
           </SearchButton>
         </SearchArea>
 
-        {!loading && products.length === 0 ? (
+        {products.length === 0 ? (
           <ContainerText>
             <Text>Nenhum produto disponível.</Text>
           </ContainerText>

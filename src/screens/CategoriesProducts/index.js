@@ -9,7 +9,7 @@ import {
   TabArea,
   HeaderText,
 } from './styled';
-import ItemProduct from '../../components/ListProdCategory/index';
+import ItemCategoryProduct from '../../components/ListProdCategory/index';
 import {getCategoryProductsAction} from '../../store/category/category.action';
 import {useNavigation} from '@react-navigation/native';
 import BackIcon from '../../assets/svg/back.svg';
@@ -21,16 +21,9 @@ const CategoriesProducts = props => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const listProducts = React.useCallback(
-    id => {
-      dispatch(getCategoryProductsAction(id));
-    },
-    [dispatch],
-  );
-
   useEffect(() => {
-    listProducts(id);
-  }, []);
+    dispatch(getCategoryProductsAction(id));
+  }, [dispatch]);
 
   const handleBackButton = () => {
     navigation.goBack();
@@ -48,7 +41,7 @@ const CategoriesProducts = props => {
         {loading && <LoadingIcon size="large" color="#463f57" />}
         <ListArea>
           {products.map((item, k) => (
-            <ItemProduct key={k} data={item} />
+            <ItemCategoryProduct key={k} data={item} />
           ))}
         </ListArea>
       </Scroller>
