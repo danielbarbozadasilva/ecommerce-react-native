@@ -17,5 +17,5 @@ export const ListArea = styled.View`
 `;
 
 export const ContainerText = styled.View`
-  margin: 50% auto;
+  margin: 60% auto;
 `;
