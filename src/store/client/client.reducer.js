@@ -4,7 +4,8 @@ export const INITIAL_STATE = {
   loading: false,
   all: [],
   likes: [],
-  change_like: []
+  change_like: [],
+  clientById: [],
 };
 
 const reducer = ({...state} = INITIAL_STATE, action) => {
@@ -12,6 +13,11 @@ const reducer = ({...state} = INITIAL_STATE, action) => {
     case TYPES.CLIENT_LOADING:
       state.error = [];
       state.loading = action.status;
+      return state;
+
+    case TYPES.CLIENT_ID:
+      state.clientById = action.data;
+      state.loading = false;
       return state;
 
     case TYPES.CLIENT_LIKES:
