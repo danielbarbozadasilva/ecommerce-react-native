@@ -23,7 +23,7 @@ export const InfoArea = styled.View`
 `;
 
 export const ProductName = styled.Text`
-  font-size: 16px;
+  font-size: 15px;
   margin: 5px 0px;
   font-weight: bold;
 `;
