@@ -30,7 +30,7 @@ import Stars from '../../components/Stars/index';
 import FavoriteIcon from '../../assets/svg/favorite.svg';
 import FavoriteFullIcon from '../../assets/svg/favorite_full.svg';
 import BackIcon from '../../assets/svg/back.svg';
-import {getStorageItem} from '../../config/auth';
+import {decodeToken} from '../../config/auth';
 import {useDispatch, useSelector} from 'react-redux';
 import {getProductByIdAction} from '../../store/product/product.action';
 import {
@@ -51,8 +51,8 @@ const ProductDetails = props => {
   }, [dispatch]);
 
   const getLike = async likes => {
-    const id = await getStorageItem('credentials');
-    const result = likes?.filter(item => item == id);
+    const {clientid} = await decodeToken();
+    const result = likes?.filter(item => item == clientid);
     return !!result;
   };
 
