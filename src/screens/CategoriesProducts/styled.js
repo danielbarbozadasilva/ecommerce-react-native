@@ -40,3 +40,7 @@ export const HeaderText = styled.Text`
   font-weight: 500;
   margin: 15px 50px;
 `
+
+export const ContainerText = styled.View`
+  margin: 70% auto;
+`;

@@ -9,6 +9,7 @@ import SendToken from '../screens/SendToken/index';
 import ProductDetails from '../screens/ProductDetails/index';
 import CategoriesProducts from '../screens/CategoriesProducts/index';
 import {NativeBaseProvider} from 'native-base';
+import ClientUpdate from '../screens/ClientUpdate/index'
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,7 @@ const Stacks = () => {
           name={'CategoriesProducts'}
           component={CategoriesProducts}
         />
+        <Stack.Screen name={'ClientUpdate'} component={ClientUpdate} />
       </Stack.Navigator>
     </NativeBaseProvider>
   );
