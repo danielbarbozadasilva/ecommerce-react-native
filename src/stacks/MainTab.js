@@ -3,9 +3,9 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import CustomTabBar from '../components/CustomTabBar/index';
 import Home from '../screens/Home/index';
 import Categories from '../screens/Categories/index';
-import Carrinho from '../screens/Cart/index';
-import Favoritos from '../screens/Favorites/index';
-import Perfil from '../screens/Profile/index';
+import Cart from '../screens/Cart/index';
+import Favorites from '../screens/Favorites/index';
+import Profile from '../screens/Profile/index';
 
 const Tab = createBottomTabNavigator();
 
@@ -14,9 +14,9 @@ const MainTab = () => {
     <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Categorias" component={Categories} />
-      <Tab.Screen name="Carrinho" component={Carrinho} />
-      <Tab.Screen name="Favoritos" component={Favoritos} />
-      <Tab.Screen name="Perfil" component={Perfil} />
+      <Tab.Screen name="Carrinho" component={Cart} />
+      <Tab.Screen name="Favoritos" component={Favorites} />
+      <Tab.Screen name="Perfil" component={Profile} />
     </Tab.Navigator>
   );
 };
