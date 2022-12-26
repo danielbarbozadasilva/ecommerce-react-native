@@ -19,7 +19,7 @@ export const getCategoryProductsAction = id => {
     dispatch({type: Types.CATEGORY_LOADING, status: true});
     try {
       const result = await getCategoryProductService(id);
-      dispatch({type: Types.CATEGORY_PRODUCTS, data: result.data.data});
+      dispatch({type: Types.CATEGORY_PRODUCTS, data: result.data.data[0].data});
     } catch (error) {}
   };
 };

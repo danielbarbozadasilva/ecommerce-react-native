@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import {RefreshControl, Text} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 import {
   Container,
@@ -17,11 +16,9 @@ import {
   getProductsAction,
   getProductsSearchAction,
 } from '../../store/product/product.action';
-import Loading from '../../components/Loading/index';
 
 const Home = () => {
   const products = useSelector(state => state.product.all);
-  const loading = useSelector(state => state.product.loading);
   const [refreshing, setRefreshing] = useState(false);
   const [searchText, setSearchText] = useState('');
   const dispatch = useDispatch();
@@ -46,10 +43,6 @@ const Home = () => {
     searchProducts();
     setSearchText('');
   };
-
-  if (loading) {
-    return <Loading />;
-  }
 
   return (
     <Container>

@@ -5,13 +5,13 @@ export const Area = styled.TouchableOpacity`
   background-color: #ffffff;
   border: 1px solid #ccc;
   margin-bottom: 20px;
-  padding: 15px;
+  padding: 5px;
   flex-direction: row;
 `;
 
 export const ProductImage = styled.Image`
-  width: 88px;
-  height: 100px;
+  width: 75px;
+  height: 85px;
   margin: 10px;
   text-align: center;
   border-radius: 20px;
@@ -19,11 +19,18 @@ export const ProductImage = styled.Image`
 
 export const InfoArea = styled.View`
   margin-left: 20px;
-  justify-content: space-between;
+  justify-content: space-between;  
+`;
+
+export const ProductNameArea = styled.View`
+  width: 170px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 export const ProductName = styled.Text`
-  font-size: 15px;
+  font-size: 14px;
   margin: 5px 0px;
   font-weight: bold;
 `;

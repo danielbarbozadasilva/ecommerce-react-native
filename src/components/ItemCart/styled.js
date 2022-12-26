@@ -11,8 +11,8 @@ export const Area = styled.TouchableOpacity`
 
 export const ProductImage = styled.Image`
   width: 75px;
-  height: 85px;
-  margin: 20px 10px;
+  height: 75px;
+  margin: 17px 10px 0px 10px;
   text-align: center;
   border-radius: 20px;
 `;
@@ -20,6 +20,11 @@ export const ProductImage = styled.Image`
 export const InfoArea = styled.View`
   margin-left: 20px;
   justify-content: space-between;
+  margin-bottom: 20px;
+`;
+
+export const HeaderArea = styled.View`
+  flex-direction: row;
 `;
 
 export const ProductNameArea = styled.View`
@@ -30,18 +35,17 @@ export const ProductNameArea = styled.View`
 `;
 
 export const ProductName = styled.Text`
-  font-size: 15px;
-  margin: 5px 0px;
+  font-size: 14px;
+  padding: 15px 0px;
   font-weight: bold;
 `;
 
 export const ProductButton = styled.View`
-  width: 103px;
+  width: 85px;
   height: 26px;
   border: 1px solid #463f57;
   justify-content: center;
   align-items: center;
-  margin: 10px 0px 10px 3px;
 `;
 
 export const ProductButtonText = styled.Text`
@@ -58,4 +62,38 @@ export const ProductPromotion = styled.Text`
 export const ProductPrice = styled.Text`
   font-size: 16px;
   color: #463f57;
+`;
+
+export const ProductQuantityArea = styled.View`
+  flex-direction: row;
+  margin: 10px 0px 0px -5px;
+`;
+
+export const QuantityTextInput = styled.Text`
+  margin: 5px;
+`;
+
+export const CustomButtonText = styled.Text`
+  font-size: 16px;
+  color: #fff;
+`;
+
+export const ProductIncrementButton = styled.TouchableOpacity`
+  width: 30px;
+  height: 30px;
+  margin: 0px 5px;
+  background-color: #463f57;
+  color: #f6f7fc;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ProductDecrementButton = styled.TouchableOpacity`
+  width: 30px;
+  height: 30px;
+  margin: 0px 5px;
+  background-color: #463f57;
+  color: #f6f7fc;
+  justify-content: center;
+  align-items: center;
 `;

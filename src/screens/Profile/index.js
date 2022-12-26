@@ -10,7 +10,7 @@ import StarIcon from '../../assets/svg/star.svg';
 import AboutIcon from '../../assets/svg/about.svg';
 import ExitIcon from '../../assets/svg/exit.svg';
 
-const Perfil = () => {
+const Profile = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
@@ -81,4 +81,4 @@ const Perfil = () => {
     </Container>
   );
 };
-export default Perfil;
+export default Profile;

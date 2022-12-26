@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react';
+import React, {useEffect} from 'react';
 import {useNavigation} from '@react-navigation/native';
 import {
   Container,
@@ -38,8 +38,13 @@ import {
   listLikeProductAction,
   removeLikeProductAction,
 } from '../../store/client/client.action';
+import {
+  addCartAction,
+  removeProductCartAction,
+} from '../../store/cart/cart.action';
 
 const ProductDetails = props => {
+  const cart = useSelector(state => state.cart.all);
   const [count, setCount] = React.useState(1);
   const {product} = props.route.params;
   const navigation = useNavigation();
@@ -93,7 +98,11 @@ const ProductDetails = props => {
   };
 
   const handleAddCartButton = () => {
-    navigation.goBack();
+    dispatch(addCartAction({...result, count: count}));
+  };
+
+  const handleRemoveCartButton = () => {
+    dispatch(removeProductCartAction(result.id));
   };
 
   return (
@@ -130,7 +139,10 @@ const ProductDetails = props => {
             )}
             <ProductInfo>
               <ProductInfoName>{result.title}</ProductInfoName>
-              <Stars stars={5} showNumber={true} />
+              <Stars
+                stars={result?.rating?.length ? result.rating[0].score : 0}
+                showNumber={result?.rating?.length ? true : false}
+              />
             </ProductInfo>
             <ProductFavButton>
               {result?.likes?.length && getLike(result.likes) ? (
@@ -164,9 +176,19 @@ const ProductDetails = props => {
           <ProductDescriptionArea>
             <ProductDescription>{result.description}</ProductDescription>
           </ProductDescriptionArea>
-          <CustomButton onPress={handleAddCartButton}>
-            <CustomButtonText>Adicionar ao Carrinho</CustomButtonText>
-          </CustomButton>
+          {cart.find(item => item.id === result.id) ? (
+            <>
+              <CustomButton onPress={handleRemoveCartButton}>
+                <CustomButtonText>Remover do carrinho</CustomButtonText>
+              </CustomButton>
+            </>
+          ) : (
+            <>
+              <CustomButton onPress={handleAddCartButton}>
+                <CustomButtonText>Adicionar ao Carrinho</CustomButtonText>
+              </CustomButton>
+            </>
+          )}
         </PageBody>
       </Scroller>
       <BackButton onPress={handleBackButton}>
