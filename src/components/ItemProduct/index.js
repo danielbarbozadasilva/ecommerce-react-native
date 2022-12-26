@@ -4,16 +4,17 @@ import {
   ProductImage,
   InfoArea,
   ProductName,
+  ProductNameArea,
   ProductPromotion,
   ProductPrice,
 } from './styled';
 import {renderImg} from '../../util/helpers/helpers.image';
 import {useNavigation} from '@react-navigation/native';
-import {formatPriceBr} from '../../util/helpers/format-price';
+import {formatPriceBr} from '../../util/helpers/format';
 
 const ItemProduct = ({data}) => {
   const navigation = useNavigation();
-  const {photos, title, price, promotion, total} = data;
+  const {photos, title, price, promotion, rating} = data;
 
   const handleClick = () => {
     navigation.navigate('ProductDetails', {product: data});
@@ -23,7 +24,9 @@ const ItemProduct = ({data}) => {
     <Area onPress={handleClick}>
       <ProductImage source={{uri: renderImg(photos[0])}} />
       <InfoArea>
-        <ProductName>{title}</ProductName>
+        <ProductNameArea>
+          <ProductName>{title}</ProductName>
+        </ProductNameArea>
         {promotion < price ? (
           <>
             <ProductPromotion>De: {formatPriceBr(price)}</ProductPromotion>
@@ -32,7 +35,7 @@ const ItemProduct = ({data}) => {
         ) : (
           <ProductPrice>{formatPriceBr(promotion)}</ProductPrice>
         )}
-        <Stars stars={total} showNumber={true} />
+        <Stars stars={rating[0]?.score} showNumber={true} />
       </InfoArea>
     </Area>
   );

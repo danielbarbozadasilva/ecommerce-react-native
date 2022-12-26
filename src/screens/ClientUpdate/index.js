@@ -26,7 +26,6 @@ const ClientUpdate = () => {
 
   const submitForm = async form => {
     dispatch(updateClientAction(form)).then(result => {
-      console.log(result?.data?.token);
       if (result?.data?.token) {
         navigation.navigate('MainTab');
         Alert.alert('Sucesso', 'Atualização realizada com sucesso!');

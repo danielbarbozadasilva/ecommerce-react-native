@@ -3,6 +3,7 @@ import {
   Area,
   ProductImage,
   InfoArea,
+  ProductNameArea,
   ProductName,
   ProductButton,
   ProductButtonText,
@@ -11,7 +12,7 @@ import {
 } from './styled';
 import {renderImg} from '../../util/helpers/helpers.image';
 import {useNavigation} from '@react-navigation/native';
-import {formatPriceBr} from '../../util/helpers/format-price';
+import {formatPriceBr} from '../../util/helpers/format';
 
 const ItemCategoryProduct = ({data}) => {
   const navigation = useNavigation();
@@ -25,7 +26,9 @@ const ItemCategoryProduct = ({data}) => {
     <Area onPress={handleClick}>
       <ProductImage source={{uri: renderImg(photos[0])}} />
       <InfoArea>
-        <ProductName>{title}</ProductName>
+        <ProductNameArea>
+          <ProductName>{title}</ProductName>
+        </ProductNameArea>
         {promotion < price ? (
           <>
             <ProductPromotion>De: {formatPriceBr(price)}</ProductPromotion>
