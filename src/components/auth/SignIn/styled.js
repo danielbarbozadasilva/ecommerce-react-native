@@ -17,8 +17,8 @@ export const Container = styled.SafeAreaView`
 `;
 
 export const SImage = styled.Image`
-  width: 350px;
-  height: 250px;
+  width: 300px;
+  height: 230px;
 `;
 
 export const InputArea = styled.View`
@@ -44,6 +44,7 @@ export const CustomButtonText = styled.Text`
 export const SignMessageButton = styled.TouchableOpacity`
   flex-direction: row;
   justify-content: center;
+  margin-bottom: 10px;
 `;
 
 export const SignMessageButtonText = styled.Text`
