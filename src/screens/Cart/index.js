@@ -11,6 +11,8 @@ import {
   SubTitleText,
   CustomButton,
   CustomButtonText,
+  CustomButtonFinish,
+  CustomButtonTextFinish,
 } from './styled';
 import ItemCart from '../../components/ItemCart/index';
 
@@ -21,6 +23,8 @@ const Cart = () => {
   const handleClick = () => {
     navigation.navigate('Home');
   };
+
+  const handleClickCheckout = () => {};
 
   return (
     <>
@@ -44,6 +48,9 @@ const Cart = () => {
                 <ItemCart key={k} data={item} />
               ))}
             </ListArea>
+            <CustomButtonFinish onPress={handleClickCheckout}>
+              <CustomButtonTextFinish>Finalizar pedido</CustomButtonTextFinish>
+            </CustomButtonFinish>
           </Scroller>
         </ContainerCart>
       )}

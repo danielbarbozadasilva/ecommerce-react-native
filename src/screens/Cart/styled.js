@@ -54,3 +54,19 @@ export const CustomButtonText = styled.Text`
   font-size: 16px;
   color: #fff;
 `;
+
+export const CustomButtonFinish = styled.TouchableOpacity`
+  height: 45px;
+  background-color: #463f57;
+  color: #f6f7fc;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 23%;
+`;
+
+export const CustomButtonTextFinish = styled.Text`
+  font-size: 16px;
+  color: #fff;
+`;
+
