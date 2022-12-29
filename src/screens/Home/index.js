@@ -9,6 +9,8 @@ import {
   SearchButton,
   ListArea,
   ContainerText,
+  ContainerImage,
+  HeaderImage,
 } from './styled';
 import ItemProduct from '../../components/ItemProduct/index';
 import SearchIcon from '../../assets/svg/search.svg';
@@ -16,6 +18,7 @@ import {
   getProductsAction,
   getProductsSearchAction,
 } from '../../store/product/product.action';
+import HeaderBanner from '../../assets/image/header-banner.jpg';
 
 const Home = () => {
   const products = useSelector(state => state.product.all);
@@ -46,22 +49,25 @@ const Home = () => {
 
   return (
     <Container>
+      <SearchArea>
+        <SearchInput
+          placeholder="Buscar..."
+          placeholderTextColor="#FFFFFF"
+          value={searchText}
+          onChangeText={t => setSearchText(t)}
+        />
+        <SearchButton>
+          <SearchIcon width="26" height="26" fill="#FFFFFF" />
+        </SearchButton>
+      </SearchArea>
+
       <Scroller
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }>
-        <SearchArea>
-          <SearchInput
-            placeholder="Buscar..."
-            placeholderTextColor="#FFFFFF"
-            value={searchText}
-            onChangeText={t => setSearchText(t)}
-          />
-          <SearchButton>
-            <SearchIcon width="26" height="26" fill="#FFFFFF" />
-          </SearchButton>
-        </SearchArea>
-
+        <ContainerImage>
+          <HeaderImage source={HeaderBanner} />
+        </ContainerImage>
         {products.length === 0 ? (
           <ContainerText>
             <Text>Nenhum produto disponível.</Text>

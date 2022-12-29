@@ -8,7 +8,6 @@ export const Container = styled.SafeAreaView`
 
 export const Scroller = styled.ScrollView`
   flex: 1;
-  padding: 20px;
 `;
 
 export const SearchButton = styled.TouchableOpacity`
@@ -22,13 +21,12 @@ export const ListArea = styled.View`
 `;
 
 export const SearchArea = styled.View`
-  background-color: #463f57;
+  background-color: #625977;
   height: 50px;
   flex-direction: row;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
-  margin-top: 10px;
 `;
 
 export const SearchInput = styled.TextInput`
@@ -39,4 +37,13 @@ export const SearchInput = styled.TextInput`
 
 export const ContainerText = styled.View`
   margin: 50% auto;
+`;
+
+export const ContainerImage = styled.View`
+
+`
+
+export const HeaderImage = styled.Image`
+  width: 100%;
+  height: 200px;
 `;
