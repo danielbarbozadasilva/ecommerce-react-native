@@ -16,6 +16,7 @@ import {
 } from './styled';
 import {schemaSignUp} from '../../../util/validations/form-signup';
 import Title from '../../Title/index';
+import CustomButtonComponent from '../../../components/Button/index';
 
 const SignUp = ({submit}) => {
   const [uf, setUf] = React.useState([]);
@@ -342,9 +343,10 @@ const SignUp = ({submit}) => {
             )}
           />
 
-          <CustomButton onPress={handleSubmit(handleSignUp)}>
-            <CustomButtonText>Cadastrar</CustomButtonText>
-          </CustomButton>
+          <CustomButtonComponent
+            text="Cadastrar"
+            onPress={handleSubmit(handleSignUp)}
+          />
         </VStack>
       </ScrollView>
     </Container>

@@ -3,18 +3,12 @@ import {TextInput, Alert} from 'react-native';
 import {useForm, Controller} from 'react-hook-form';
 import {useNavigation} from '@react-navigation/native';
 import {yupResolver} from '@hookform/resolvers/yup';
-import {
-  CustomButton,
-  CustomButtonText,
-  ErrorMessage,
-  Container,
-  InputArea,
-  styles,
-} from './styled';
+import {ErrorMessage, Container, InputArea, styles} from './styled';
 import {schemaRecovery} from '../../util/validations/form-recovery-password';
 import {recoveryPasswordAction} from '../../store/auth/auth.action';
 import Title from '../../components/Title/index';
 import {useDispatch} from 'react-redux';
+import CustomButtonComponent from '../../components/Button';
 
 const RecoveryPassword = () => {
   const navigation = useNavigation();
@@ -115,13 +109,14 @@ const RecoveryPassword = () => {
           )}
         />
 
-        <CustomButton onPress={handleSubmit(handlerRecovery)}>
-          <CustomButtonText>RECUPERAR</CustomButtonText>
-        </CustomButton>
-
-        <CustomButton onPress={handleBackButtonClick}>
-          <CustomButtonText>CANCELAR</CustomButtonText>
-        </CustomButton>
+        <CustomButtonComponent
+          text="RECUPERAR"
+          onPress={handleSubmit(handlerRecovery)}
+        />
+        <CustomButtonComponent
+          text="CANCELAR"
+          onPress={handleBackButtonClick}
+        />
       </InputArea>
     </Container>
   );

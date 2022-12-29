@@ -1,17 +1,11 @@
 import React from 'react';
-import {
-  Container,
-  InputArea,
-  CustomButton,
-  CustomButtonText,
-  STextInput,
-  styles,
-} from './styled';
+import {Container, InputArea, STextInput, styles} from './styled';
 import {useNavigation} from '@react-navigation/native';
 import {sendTokenAction} from '../../store/auth/auth.action';
 import {Alert} from 'react-native';
 import Title from '../../components/Title/index';
 import {useDispatch} from 'react-redux';
+import CustomButtonComponent from '../../components/Button/index';
 
 const SendToken = () => {
   const navigation = useNavigation();
@@ -47,13 +41,8 @@ const SendToken = () => {
           style={styles.input}
         />
 
-        <CustomButton onPress={handlerRecoveryClick}>
-          <CustomButtonText>ENVIAR</CustomButtonText>
-        </CustomButton>
-
-        <CustomButton onPress={handleBackButtonClick}>
-          <CustomButtonText>VOLTAR</CustomButtonText>
-        </CustomButton>
+        <CustomButtonComponent text="ENVIAR" onPress={handlerRecoveryClick} />
+        <CustomButtonComponent text="VOLTAR" onPress={handleBackButtonClick} />
       </InputArea>
     </Container>
   );

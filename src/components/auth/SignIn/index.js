@@ -3,8 +3,6 @@ import {
   Container,
   SImage,
   InputArea,
-  CustomButton,
-  CustomButtonText,
   SignMessageButton,
   SignMessageButtonText,
   SignMessageButtonTextBold,
@@ -15,6 +13,7 @@ import LockIcon from '../../../assets/svg/lock.svg';
 import {useNavigation} from '@react-navigation/native';
 import imageLogo from '../../../assets/image/1.png';
 import {TextInput, Alert} from 'react-native';
+import CustomButtonComponent from '../../../components/Button/index';
 
 const SignIn = ({submit}) => {
   const navigation = useNavigation();
@@ -23,7 +22,7 @@ const SignIn = ({submit}) => {
 
   const handlerSignClick = async () => {
     if (email !== '' && password !== '') {
-      submit({email, password})
+      submit({email, password});
     } else {
       Alert.alert('Atenção', 'Campo(s) não preenchido(s)!');
     }
@@ -60,13 +59,10 @@ const SignIn = ({submit}) => {
           <SignMessageButtonText>Esqueceu a sua senha? </SignMessageButtonText>
           <SignMessageButtonTextBold>Recuperar senha</SignMessageButtonTextBold>
         </SignMessageButton>
-        <CustomButton onPress={handlerSignClick}>
-          <CustomButtonText>LOGAR</CustomButtonText>
-        </CustomButton>
 
-        <CustomButton onPress={handleSignupButtonClick}>
-          <CustomButtonText>CADASTRAR</CustomButtonText>
-        </CustomButton>
+        <CustomButtonComponent text="LOGAR" onPress={handlerSignClick} />
+        <CustomButtonComponent text="CADASTRAR" onPress={handleSignupButtonClick} />
+        
       </InputArea>
     </Container>
   );
