@@ -11,7 +11,7 @@ import {
 import EmailIcon from '../../../assets/svg/email.svg';
 import LockIcon from '../../../assets/svg/lock.svg';
 import {useNavigation} from '@react-navigation/native';
-import imageLogo from '../../../assets/image/1.png';
+import imageLogo from '../../../assets/image/logo.png';
 import {TextInput, Alert} from 'react-native';
 import CustomButtonComponent from '../../../components/Button/index';
 
