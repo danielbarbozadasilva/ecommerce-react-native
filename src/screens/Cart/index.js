@@ -21,7 +21,7 @@ const Cart = () => {
   const navigation = useNavigation();
 
   const handleClick = () => {
-    navigation.navigate('Home');
+    navigation.navigate('PrimeTech');
   };
 
   const handleClickCheckout = () => {};

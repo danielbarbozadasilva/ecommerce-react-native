@@ -12,7 +12,7 @@ const Tab = createBottomTabNavigator();
 const MainTab = () => {
   return (
     <Tab.Navigator tabBar={props => <CustomTabBar {...props} />}>
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="PrimeTech" component={Home} />
       <Tab.Screen name="Categorias" component={Categories} />
       <Tab.Screen name="Carrinho" component={Cart} />
       <Tab.Screen name="Favoritos" component={Favorites} />
