@@ -41,9 +41,9 @@ npx react-native run-android
 ## **Requisitos funcionais**
 <br/>
 
-RF001 – O sistema deve controlar a autenticação dos usuários.
+RF001 – O sistema deve controlar a autenticação do cliente.
 
-RF002 – O sistema deve manter cadastro de clientes.
+RF002 – O sistema deve manter cadastro do cliente.
 
 RF003 – O sistema deve consultar produtos.
 
@@ -131,7 +131,7 @@ RF006 – O sistema deve controlar a venda de produtos.
 
 ## **Tela de login**
 <br />
-Para acessar o sistema o usuário deve informar e-mail e senha válidos, e clicar no botão "Logar".
+Para acessar o sistema, o cliente deve informar o e-mail e a senha corretamente, e clicar no botão "Logar".
 <br />
 <br />
 <img src="./src/assets/image/prints/2.png" width="350px" alt=""/>
@@ -154,7 +154,7 @@ Caso o usuário ainda não esteja cadastrado no sistema. Este deve clicar no bot
 
 
 ## **Tela Recuperar senha**
-Caso o usuário tenha esquecido sua senha este deve clicar em "Recuperar senha". Na tela que vai se abrir, deve digitar seu e-mail e clicar no botão "Enviar".
+Caso o usuário tenha esquecido sua senha, este deve clicar em "Recuperar senha". Na tela que vai se abrir, deve digitar seu e-mail e clicar no botão "Enviar".
 <br />
 <br />
 <img src="./src/assets/image/prints/5.png" width="350px" alt="" />
@@ -174,7 +174,7 @@ Um e-mail será enviado com um token. Para redefinir a senha basta digitar o tok
 
 ## **Tela Home**
 <br />
-Na tela principal o cliente terá acesso aos produtos. Ainda pode utilizar a barra de menu, para navegar através de produtos, categorias, carrinho, produtos favoritados e dados da conta.
+Na tela principal, o cliente terá acesso aos produtos. Este pode utilizar a barra de menu, para navegar através de produtos, categorias, carrinho, produtos favoritados e dados da conta.
 <br />
 <br />
 <img src="./src/assets/image/prints/7.png" width="350px" alt="" />
@@ -228,7 +228,7 @@ Para acessar a tela de categorias basta clicar no icone em formato de "Lista" lo
 ## **Tela Carrinho**
 <br />
 Para acessar a tela do carrinho basta clicar no icone em formato de "Carrinho de compras", localizado no centro do menu. 
-Nesta tela será possivel remover o produto escolhido, assim como alterar a sua quantidade. Ao finalizar o usuário deverá clicar em "Finalizar pedido".
+Nesta tela será possivel remover o produto escolhido, assim como alterar a sua quantidade. Ao terminar o usuário deverá clicar no botão "Finalizar pedido".
 <br />
 <br />
 <div style="display: flex;">
@@ -250,7 +250,7 @@ Para acessar a tela de perfil basta clicar no icone em formato de "Pessoa" local
 
 ## **Tela Perfil - Seus dados**
 <br />
-Nesta tela o usuário visualizará seus dados e podendo alterá-los.
+Nesta tela o usuário visualizará seus dados, com a possibilidade alterá-los.
 <br />
 <br />
 <div style="display: flex;">
