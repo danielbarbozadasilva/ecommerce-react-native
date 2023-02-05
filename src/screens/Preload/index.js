@@ -28,7 +28,7 @@ const Preload = () => {
   return (
     <Container>
       <Image
-        source={require('../../assets/image/1.png')}
+        source={require('../../assets/image/logo.png')}
         style={{width: 350, height: 350}}
       />
       <LoadingIcon size="large" color="#ccc" />

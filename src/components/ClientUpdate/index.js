@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment'
 import {TextInputMask} from 'react-native-masked-text';
 import {TextInput} from 'react-native';
 import {VStack, ScrollView, Select} from 'native-base';
@@ -30,19 +31,19 @@ const ClientUpdate = ({submit}) => {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      name: clientById?.user?.name,
-      email: clientById?.user?.email,
-      cpf: clientById?.client?.cpf,
-      birthDate: clientById?.client?.birthDate,
-      phone01: clientById?.client?.phones[0],
-      phone02: clientById?.client?.phones[1],
-      street: clientById?.address?.street,
-      number: clientById?.address?.number,
-      district: clientById?.address?.district,
-      city: clientById?.address?.city,
-      zipCode: clientById?.address?.zipCode,
-      uf: clientById?.address?.state,
-      complement: clientById?.address?.complement,
+      name: clientById?.name,
+      email: clientById?.email,
+      cpf: clientById?.cpf,
+      birthDate: moment(clientById?.birthDate).format('DD/MM/YYYY'),
+      phone01: clientById?.phone01,
+      phone02: clientById?.phone02,
+      street: clientById?.street,
+      number: clientById?.number,
+      district: clientById?.district,
+      city: clientById?.city,
+      zipCode: clientById?.zipCode,
+      uf: clientById?.uf,
+      complement: clientById?.complement,
     },
     resolver: yupResolver(schemaUpdateClient),
   });

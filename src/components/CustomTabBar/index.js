@@ -14,7 +14,7 @@ const CustomTabBar = ({state, navigation}) => {
 
   return (
     <TabArea>
-      <TabItem onPress={() => goTo('Home')}>
+      <TabItem onPress={() => goTo('PrimeTech')}>
         <HomeIcon
           style={{opacity: state.index === 0 ? 1 : 0.5}}
           width="24"

@@ -11,6 +11,8 @@ import {
   SubTitleText,
   CustomButton,
   CustomButtonText,
+  CustomButtonFinish,
+  CustomButtonTextFinish,
 } from './styled';
 import ItemCart from '../../components/ItemCart/index';
 
@@ -19,8 +21,10 @@ const Cart = () => {
   const navigation = useNavigation();
 
   const handleClick = () => {
-    navigation.navigate('Home');
+    navigation.navigate('PrimeTech');
   };
+
+  const handleClickCheckout = () => {};
 
   return (
     <>
@@ -44,6 +48,9 @@ const Cart = () => {
                 <ItemCart key={k} data={item} />
               ))}
             </ListArea>
+            <CustomButtonFinish onPress={handleClickCheckout}>
+              <CustomButtonTextFinish>Finalizar pedido</CustomButtonTextFinish>
+            </CustomButtonFinish>
           </Scroller>
         </ContainerCart>
       )}

@@ -19,21 +19,6 @@ export const InputArea = styled.View`
   padding: 0px 40px;
 `;
 
-export const CustomButton = styled.TouchableOpacity`
-  height: 45px;
-  background-color: #463f57;
-  color: #f6f7fc;
-  border-radius: 30px;
-  justify-content: center;
-  align-items: center;
-  margin: 10px 0px;
-`;
-
-export const CustomButtonText = styled.Text`
-  font-size: 18px;
-  color: #fff;
-`;
-
 export const SelectArea = styled.View`
   margin: 10px 0px;
 `;

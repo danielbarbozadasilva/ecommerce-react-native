@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux';
 import FormSignIn from '../../components/auth/SignIn/index';
 import {useNavigation} from '@react-navigation/native';
 
-const SignUp = () => {
+const SignIn = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -23,4 +23,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;
