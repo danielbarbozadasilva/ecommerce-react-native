@@ -23,6 +23,9 @@ import {
   ProductDecrementButton,
   ProductQuantityArea,
   QuantityTextInput,
+  ProductPromotion,
+  ProductPrice,
+  ProductContainer,
 } from './styled';
 import Swiper from 'react-native-swiper';
 import {renderImg} from '../../util/helpers/helpers.image';
@@ -42,6 +45,7 @@ import {
   addCartAction,
   removeProductCartAction,
 } from '../../store/cart/cart.action';
+import {formatPriceBr} from '../../util/helpers/format';
 
 const ProductDetails = props => {
   const cart = useSelector(state => state.cart.all);
@@ -162,10 +166,25 @@ const ProductDetails = props => {
               )}
             </ProductFavButton>
           </ProductInfoArea>
+          {result.promotion < result.price ? (
+            <ProductContainer>
+              <ProductPromotion>
+                De: {formatPriceBr(result.price)}
+              </ProductPromotion>
+              <ProductPrice>
+                Por: {formatPriceBr(result.promotion)}
+              </ProductPrice>
+            </ProductContainer>
+          ) : (
+            <ProductContainer>
+              <ProductPrice>{formatPriceBr(result.promotion)}</ProductPrice>
+            </ProductContainer>
+          )}
           <ProductQuantityArea>
             <ProductIncrementButton onPress={increment}>
               <CustomButtonText>+</CustomButtonText>
             </ProductIncrementButton>
+
             <QuantityTextInput>
               {result.quantity !== 0 ? count : 0}
             </QuantityTextInput>
@@ -173,6 +192,7 @@ const ProductDetails = props => {
               <CustomButtonText>-</CustomButtonText>
             </ProductDecrementButton>
           </ProductQuantityArea>
+
           <ProductDescriptionArea>
             <ProductDescription>{result.description}</ProductDescription>
           </ProductDescriptionArea>
