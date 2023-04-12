@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Container, Scroller, ListArea, ContainerText} from './styled';
-import ItemProduct from '../../components/ItemProduct/index';
+import ItemFavorite from '../../components/ItemFavorite/index';
 import {listLikeProductAction} from '../../store/client/client.action';
 import {Text} from 'react-native';
 
@@ -27,7 +27,7 @@ const Favorites = () => {
         ) : (
           <ListArea>
             {products?.map((item, k) => (
-              <ItemProduct key={k} data={item} />
+              <ItemFavorite key={k} data={item} />
             ))}
           </ListArea>
         )}

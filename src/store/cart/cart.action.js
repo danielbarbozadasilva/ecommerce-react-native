@@ -4,7 +4,6 @@ import {calculatePriceDeliveryService} from '../../services/cart.service';
 export const addCartAction = data => {
   return async dispatch => {
     try {
-      console.log(data);
       dispatch({type: TYPES.ADD_CART, data: data});
     } catch (error) {}
   };

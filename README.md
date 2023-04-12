@@ -1,6 +1,6 @@
 # **APP React Native PrimeTech E-commerce**
 ## **Escopo do produto**
-O Projeto PrimeTech E-commerce é um Sistema de comércio eletrônico que tem o intuito de facilitar a compra e venda de produtos. Todas as suas funcionalidades foram pensadas e elaboradas para proporcionar facilidade e comodidade aos usuários da plataforma.
+O Projeto PrimeTech E-commerce consiste em um sistema web de comércio eletrônico que tem o intuito de comercializar produtos de informática. Todas as suas funcionalidades foram pensadas e elaboradas para proporcionar facilidade e comodidade aos usuários da plataforma.
 
 O Aplicativo tem o objetivo de listar as categorias e seus respectivos produtos. Possibilitando ao cliente consultar, comprar e avaliar produtos.
 
@@ -8,9 +8,16 @@ O Aplicativo foi desenvolvido utilizando o React Native.
 <br/>
 <br/>
 
-A API foi desenvolvida utilizando o NodeJs, ExpressJs e Banco de dados MongoDB. Foi realizada a integração com o PagSeguro. E está disponível para consulta no link abaixo:
+A API foi desenvolvida utilizando o NodeJs, ExpressJs e Banco de dados MongoDB. Foi realizada a integração com o PagSeguro e Correios. E está disponível para consulta no link abaixo:
 ```
 https://github.com/danielbarbozadasilva/ecommerce-nodejs-api
+```
+<br/>
+
+O Front-End foi desenvolvido utilizando o ReactJs em Javascript com layout responsivo, Material UI, Styled-components e Redux. E está disponível para consulta no link abaixo:
+
+```
+https://github.com/danielbarbozadasilva/ecommerce-frontend-react
 ```
 <br/>
 
