@@ -15,10 +15,10 @@ import {
   ProductDecrementButton,
 } from './styled';
 import {renderImg} from '../../util/helpers/helpers.image';
-import {formatPriceBr} from '../../util/helpers/format';
 import Remove from '../../assets/svg/remove.svg';
 import {removeProductCartAction} from '../../store/cart/cart.action';
 import {useDispatch} from 'react-redux';
+import {formatPriceBr} from '../../util/helpers/format';
 
 const ItemCart = ({data}) => {
   const {id, photos, title, price, quantity, promotion, count} = data;

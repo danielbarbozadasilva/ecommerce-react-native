@@ -64,6 +64,21 @@ export const ProductAvatar = styled.Image`
   border-color: #fff;
 `;
 
+export const ProductContainer = styled.View`
+  margin: 1% 8%;
+`
+
+export const ProductPromotion = styled.Text`
+  text-decoration: line-through;
+  font-size: 16px;
+  color: #463f57;
+`;
+
+export const ProductPrice = styled.Text`
+  font-size: 20px;
+  color: #463f57;
+`;
+
 export const ProductInfo = styled.View`
   flex: 1;
   justify-content: flex-end;
